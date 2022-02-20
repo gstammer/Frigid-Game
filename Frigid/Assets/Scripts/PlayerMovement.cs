@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     //starts up when game is loaded
     private void Awake() {
         body = GetComponent<Rigidbody2D>();
-        animus = GetComponent<Animator>();
+        //animus = GetComponent<Animator>();
     }
 
     //updates position state for for every frame of game
@@ -35,6 +35,6 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);    
 
         //checks if character is running to play run animation
-        animus.SetBool("run", horizontalInput != 0); 
+        //animus.SetBool("New Bool", horizontalInput != 0); 
     }
 }
