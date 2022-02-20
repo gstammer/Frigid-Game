@@ -10,8 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private bool grounded;
     private BoxCollider2D boxCollider;
     private float wallClimbCooldown;
-    private float horizontalInput;
-    
+    private float horizontalInput;  
 
     [SerializeField] private float speed;
     [SerializeField] private float jumpBoost;
@@ -75,11 +74,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if(horizontalInput == 0)
             {
-                body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 10, 3);
+                //returns force opposite the direction player is facing, and then upwards
+                body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 10);
                 transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             }
             else
-                //returns force opposite the direction player is facing, and then upwards
+                //same as above, but higher upwards boost when no horizontal
                 body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 12);
 
             wallClimbCooldown = 0;
