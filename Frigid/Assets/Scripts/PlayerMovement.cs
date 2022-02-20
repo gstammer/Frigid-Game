@@ -6,11 +6,13 @@ public class PlayerMovement : MonoBehaviour
 {
     //name of player object
     private Rigidbody2D body; 
+
     [SerializeField] private float speed;
 
     //starts up when game is loaded
     private void Awake() {
         body = GetComponent<Rigidbody2D>();
+        animus = GetComponent<Animator>();
     }
 
     //updates position state for for every frame of game
@@ -30,12 +32,9 @@ public class PlayerMovement : MonoBehaviour
         if (horizontalInput > 0.01f) 
             transform.localScale = Vector3.one;
         else if (horizontalInput < -0.01f)
-            transform.localScale = new Vector3(-1, 1, 1);
-            
+            transform.localScale = new Vector3(-1, 1, 1);    
+
+        //checks if character is running to play run animation
+        animus.SetBool("run", horizontalInput != 0); 
     }
-
-
-
-    
-
 }
